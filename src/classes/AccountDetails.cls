@@ -1,6 +1,6 @@
 public class AccountDetails {
 
-    // ApexPages.StandardSetController must be instantiated
+    //apexPages.StandardSetController must be instantiated
 
     // for standard list controllers
 
