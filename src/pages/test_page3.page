@@ -1,0 +1,30 @@
+<apex:page controller="AccountDetails">
+<apex:form >
+    <apex:pageBlock >
+
+        <apex:pageBlockTable value="{!accounts}" var="a">
+
+            <apex:column value="{!a.Name}"/>
+
+            <apex:column value="{!a.Id}"/>
+
+        </apex:pageBlockTable>
+
+    </apex:pageBlock>
+    
+     <apex:panelGrid columns="7" id="buttons">
+
+                <apex:inputHidden />
+
+                <apex:commandButton reRender="error,blocktable,buttons" disabled="{!!setCon.hasprevious}" action="{!setCon.First}" value="First"/>
+
+                <apex:commandButton reRender="error,blocktable,buttons" disabled="{!!setCon.hasprevious}" action="{!setCon.Previous}" value="Previous"/>
+
+                <apex:commandButton reRender="error,blocktable,buttons" disabled="{!!setCon.hasnext}" action="{!setCon.Next}" value="Next"/>
+
+                <apex:commandButton reRender="error,blocktable,buttons" disabled="{!!setCon.hasnext}" action="{!setCon.Last}" value="Last"/>
+
+            </apex:panelGrid>
+            </apex:form>
+
+</apex:page>

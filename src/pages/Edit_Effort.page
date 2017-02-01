@@ -1,0 +1,26 @@
+<apex:page standardController="Effort_Information__c" extensions="EditEffortController" sidebar="false" showHeader="false">
+
+ <apex:outputPanel rendered="{!refreshPage}">
+        <script> 
+           
+          opener.location.reload(true);
+      self.close();
+      
+        </script>
+    </apex:outputPanel> 
+
+<apex:form id="myForm">
+        <div style="font-size: 20px;">Edit Effort</div><br/>
+        <apex:pageMessages id="showmsg"></apex:pageMessages>
+        <apex:pageBlock mode="edit" tabStyle="Effort_Information__c" id="myPageBlock">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!EditEffort}"/>
+                <apex:commandButton value="Cancel" onclick="window.close();"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Edit Effort" id="idPageBlockSection">
+                <apex:inputField value="{!Effort_Information__c.Date__c}"/>
+                <apex:inputField value="{!Effort_Information__c.Effort_on_Date__c}"/>
+                </apex:pageBlockSection>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

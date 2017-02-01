@@ -1,0 +1,45 @@
+<apex:page >
+ 
+ <head>
+<style>
+#div1 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drag1(ev) {
+    ev.dataTransfer.setData("text1", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    alert(data);
+    ev.target.appendChild(document.getElementById(data));
+}
+
+function dragend(ev){
+ev.preventDefault();
+ var data = ev.dataTransfer.getData("text1");
+ alert(data);
+ ev.target.appendChild(document.getElementById(data));
+}
+
+</script>
+</head>
+<body>
+
+<p>Drag the W3Schools image into the rectangle:</p>
+
+<div id="div1" ondragstart="drag1(event)" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true">Rishu</div>
+<br/>
+<div><img src="{!$Resource.Image1}" id="drag1" draggable="true" ondragstart="drag(event)" ondragend="dragend(event)" width="336" height="69"/></div>
+
+</body>
+</apex:page>

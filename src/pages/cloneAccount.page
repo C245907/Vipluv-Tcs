@@ -1,0 +1,18 @@
+<apex:page Controller="CloneDeepCloneTest">
+
+  <apex:form >
+
+  <apex:pageBlock >
+
+      <apex:repeat value="{!newAccList}" var="nA" >
+
+         <apex:inputField value="{!nA.Name}"/>
+
+      </apex:repeat>
+  </apex:pageBlock>
+
+      <apex:commandButton value="Save" action="{!doSave}"/>
+
+  </apex:form>
+
+</apex:page>

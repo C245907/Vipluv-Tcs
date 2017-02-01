@@ -1,0 +1,6 @@
+<apex:component >
+<apex:attribute name="a" type="string" description="q"/>
+
+<analytics:reportChart reportId="/00O90000008rs0k"></analytics:reportChart>
+
+</apex:component>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>vehicle</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>vehicles</value>
+    </caseValues>
+    <fields>
+        <label><!-- ADD_TEST --></label>
+        <name>ADD_TEST__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactive --></label>
+        <name>Inactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- test --></label>
+        <name>test__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Record cannot be updated --></errorMessage>
+        <name>Rule1</name>
+    </validationRules>
+</CustomObjectTranslation>

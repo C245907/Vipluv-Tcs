@@ -1,0 +1,54 @@
+<apex:page controller="PopupTest" cache="false">
+<apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+<apex:form >
+    <apex:repeat value="{!accounts}" var="acc">                            
+          <br/>
+          <a href="#" data-toggle="popover" role="button">{!acc.name}</a>
+          <div id = "popover_content_Id" style="">
+         <apex:commandButton value="Edit" id="theButton" onclick="window.open('/{!acc.id}/e?retURL=%2F{!acc.id}');"/>
+         <br/>
+          Accoumt Name :{!acc.name}
+          </div>
+          <!-- <a href="/{!acc.id}"
+id="{!acc.id}"
+onblur="LookupHoverDetail.getHover('{!acc.id}').hide();"
+onfocus="LookupHoverDetail.getHover('{!acc.id}', '/{!acc.id}/m?retURL=/{!acc.id}&isAjaxRequest=1').show();"
+onmouseout="LookupHoverDetail.getHover('{!acc.id}').hide();"
+onmouseover="LookupHoverDetail.getHover('{!acc.id}', '/{!acc.id}/m?retURL=/{!acc.id}&isAjaxRequest=1').show();">
+{!acc.Name}
+</a> -->
+    </apex:repeat>
+   
+<br/><br/>
+<a href="#" data-toggle="tooltip" data-html="true" title="hurray" >Test Hover</a>
+<br/><br/>
+
+
+</apex:form>
+
+
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover({
+    placement : 'right',
+    trigger : 'click',
+    html : true,
+    title : 'Account Information',
+    content : function() {
+      return $('#popover_content_Id').html();
+    }
+    });
+});
+</script>    
+    
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"/>
+<apex:includeScript value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>    
+    
+
+</apex:page>

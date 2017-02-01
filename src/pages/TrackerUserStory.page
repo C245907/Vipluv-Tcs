@@ -1,0 +1,107 @@
+<apex:page standardController="User_Stories__c" extensions="TrackerUserStoryController">
+
+    <apex:form id="theForm">
+ 
+    <apex:pageBlock >
+    
+        <apex:pageBlockTable value="{!UserStoryRecord}" var="u">
+        
+             <apex:column headerValue="User Stories Name">
+         <apex:outputfield value="{!u.Name}"/>
+     </apex:column>
+     
+                  <apex:column headerValue="Total Effort Req">
+         <apex:outputfield value="{!u.Total_Effort_Req__c}"/>
+     </apex:column>
+     
+            <apex:column headerValue="EFfort Information" >
+            <div align="center" style="margin-bottom:5px;" >
+            <apex:commandButton value="New" onclick="return NewEffort('{!u.Id}');"/>
+            </div>
+            <apex:pageBlockTable value="{!u.Effort_Informations__r}" var="e">
+                       <apex:column headerValue="Date">
+         <apex:outputfield value="{!e.Date__c}">
+         <apex:inlineEditSupport disabled="true"/>
+         </apex:outputfield>
+     </apex:column>
+                       <apex:column headerValue="Effort on Date">
+         <apex:outputfield value="{!e.Effort_on_Date__c}">
+         <apex:inlineEditSupport disabled="true"/>
+         </apex:outputfield>
+     </apex:column>   
+                            <apex:column headerValue="Actions">
+         <apex:outputLink value="" onclick="return EditEffort('{!e.Id}','{!e.Date__c}','{!e.Effort_on_Date__c}');" style="color:blue;">Edit</apex:outputLink>
+     </apex:column>    
+            </apex:pageBlockTable>
+            </apex:column>
+            
+                              <apex:column headerValue="Total Effort Covered">
+         <apex:outputfield value="{!u.Total_Effort_Covered__c}"/>
+     </apex:column>
+            
+            <apex:inlineEditSupport event="ondblClick" showOnEdit="saveButton,cancelButton"/>
+          </apex:pageBlockTable>
+          
+                   <apex:pageblockButtons >              
+
+                <apex:commandButton value="Save" action="{!save}" id="saveButton" style="display: none;"/>
+
+                <apex:commandButton value="Cancel" action="{!cancel}" id="cancelButton" style="display: none;"/>
+   </apex:pageblockButtons>
+
+        
+    </apex:pageBlock>
+    
+<!--
+<apex:actionFunction name="saveRecord" action="{!datasave}">
+<apex:param name="idOfUserStory" assignTo="{!idOfUserStory}" value=""/>
+</apex:actionFunction>    
+-->
+
+    </apex:form>
+    
+    <script type="text/javascript">
+
+
+function NewEffort(Id)
+
+{
+
+newwindow = window.open('/apex/New_Effort?Id='+Id,'name','left=300px,top=200px,height=250,width=650');
+
+
+if (window.focus) {
+                newwindow.focus()
+            }
+
+return false;
+
+}
+
+</script>
+
+
+
+<script type="text/javascript">
+
+
+function EditEffort(Id,date,effortOnDate)
+
+{
+
+newwindow = window.open('/apex/Edit_Effort?Id='+Id+'&date='+date+'&effortOnDate='+effortOnDate,'name','left=300px,top=200px,height=250,width=650');
+
+
+if (window.focus) {
+                newwindow.focus()
+            }
+
+return false;
+
+}
+
+
+</script>
+
+
+</apex:page>

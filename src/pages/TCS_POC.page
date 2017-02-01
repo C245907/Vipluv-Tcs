@@ -1,0 +1,49 @@
+<apex:page controller="ChartController" cache="false">
+<html>
+<head>
+<meta Http-Equiv="Cache-Control" Content="no-cache"/>
+<meta Http-Equiv="Pragma" Content="no-cache"/>
+<meta Http-Equiv="Expires" Content="0"/>
+</head>
+<apex:form >
+<div align="center" >
+<div style="border-style:solid;">
+
+<analytics:reportChart reportId="00O90000008rs0k"></analytics:reportChart>
+</div>
+</div>
+
+  <apex:chart height="300" width="700" data="{!Data}">
+
+          <apex:axis type="Numeric" position="left" fields="data1,data2"
+
+            title="Opportunities Closed" grid="true"/>
+
+          <apex:axis type="Category" position="bottom" fields="name"
+
+            title="Month of the Year">
+
+        </apex:axis>
+
+        <apex:lineSeries axis="left" fill="false" xField="name" yField="data1"
+
+          markerType="circle" markerSize="4" markerFill="#FF0000"/>
+          
+        <apex:lineSeries axis="left" fill="false" xField="name" yField="data2"
+
+          markerType="circle" markerSize="4" markerFill="#FF0000"/>
+   </apex:chart>
+
+
+</apex:form>
+
+
+</html>
+
+<SCRIPT LANGUAGE="javascript"> 
+{  
+ 
+}
+</SCRIPT>
+
+</apex:page>
